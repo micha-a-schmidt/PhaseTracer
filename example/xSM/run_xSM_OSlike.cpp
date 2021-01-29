@@ -19,8 +19,14 @@
 
 int main(int argc, char* argv[]) {
   
+  const bool debug_mode = argc > 1 and strcmp(argv[1],"-d")==0;
+  
   // Set level of screen  output
-  LOGGER(info);
+  if (debug_mode) {
+    LOGGER(debug);
+  } else {
+    LOGGER(fatal);
+  }
   
   // Construct our model
   EffectivePotential::xSM_OSlike model;
@@ -36,6 +42,8 @@ int main(int argc, char* argv[]) {
   std::cout << tf;
 
   // Print the data in a particular format for plotting
-  PhaseTracer::phase_plotter(tf, "xSM");
+  if (debug_mode) {
+    PhaseTracer::phase_plotter(tf, "xSM");
+  }
   return 0;
 }
