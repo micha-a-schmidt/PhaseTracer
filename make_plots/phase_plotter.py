@@ -264,7 +264,7 @@ class Phase(object):
 
 class Transition(object):
     def __init__(self, transition):
-        self.n_field = (len(transition) - 2) / 2
+        self.n_field = (len(transition) - 2) // 2
         self.TC = transition[0]
         self.true_vacuum = transition[1:self.n_field+1]
         self.false_vacuum = transition[self.n_field+1:-1]
