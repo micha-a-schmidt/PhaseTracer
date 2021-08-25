@@ -35,7 +35,7 @@ m_s = data["m_s"]
 TC = data["T1_c^PT"]
 TC_theory = data["T_c^EX"]
 
-print("{} failures in {} points".format(sum(failed), len(data["m_s"])))
+print "{} failures in {} points".format(sum(failed), len(data["m_s"]))
 
 # Plot lambda_hs against m_s
 
@@ -47,9 +47,9 @@ cb.set_label(r"$T_C$ (GeV)")
 
 
 diff = abs(TC - TC_theory) / TC_theory
-Z = list(zip(m_s, l_hs, diff))
+Z = zip(m_s, l_hs, diff)
 Z.sort(key=lambda t: t[2], reverse=False)
-m_s, l_hs, diff = list(zip(*Z))
+m_s, l_hs, diff = zip(*Z)
 
 cp = ax[1].scatter(m_s, l_hs, c=diff, marker="s", s=2, edgecolor='None', cmap=cm.get_cmap('autumn_r', 15))
 # Add colorbar
